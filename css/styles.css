@@ -1,26 +1,39 @@
+/* Body Styles */
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #f0f8ff;
+    background-color: #e6e1e8;
 }
 
+/* Title Styles */
 #title {
+    text-align: center;
+    font-size: 450%;
+    font-weight: bold;
     color: #48206b;
+    transform: skewX(-10deg);
+    margin: 0;
+    padding: 20px;
 }
 
+/* More Info Styles */
 .moreInfo {
     display: none;
+    margin-top: auto;
+    flex-grow: 1;
 }
 
 .animeImg:hover + .moreInfo {
     display: block;
 }
 
+/* Results Element Styles */
 #resultsElement {
     display: flex;
-    flex-wrap: wrap; /* Wrap items to the next line when necessary */
-    justify-content: space-around; /* Distribute items evenly */
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
+/* Anime Styles */
 .anime {
     width: calc(33.33% - 10px);
     margin-bottom: 20px;
@@ -31,38 +44,32 @@ body {
     flex-direction: column;
 }
 
+/* Anime Image Styles */
 .animeImg {
     max-width: 100%;
 }
 
-.animeTitle {
+/* Anime Titles Styles */
+.animeTitles {
     font-weight: bold;
     margin: 10px 0;
 }
 
-.moreInfo {
-    margin-top: auto;
-    flex-grow: 1;
+/* Link Styles */
+a {
+    text-decoration: none;
+    color: #48206b;
 }
 
-#title {
-    text-align: center;
-    font-size: 450%;
-    font-weight: bold;
-    transform: skewX(-10deg);
-    margin: 0;
-    padding: 20px;
-}
-
+/* Search Element Styles */
 #searchElement {
-    /* Initial styles for the search element */
     background-color: #f2ceff;
     text-align: center;
     font-size: 30px;
     text-align: center;
     border-radius: 50px;
     width: 40%;
-    transition: width 0.5s ease; /* Transition for width change */
+    transition: width 0.5s ease;
 }
 
 #searchElementDiv {
@@ -73,6 +80,5 @@ body {
 
 #searchElement:hover,
 #searchElement:focus {
-    /* Styles for when the search element is hovered or focused */
-    width: 50%; /* Adjust the width as needed */
+    width: 50%;
 }
