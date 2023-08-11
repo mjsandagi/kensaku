@@ -8,14 +8,17 @@
     </head>
     <body>
         <header>
-            <h1>Kensaku</h1>
+            <h1 id="title">Kensaku</h1>
         </header>
         <main>
-            <input
-                type="text"
-                id="searchElement"
-                placeholder="Search for an anime"
-            />
+            <div id="searchElementDiv">
+                <input
+                    type="text"
+                    id="searchElement"
+                    placeholder="Search for an anime"
+                />
+                <div id="search"></div>
+            </div>
         </main>
         <div id="resultsElement"></div>
         <script src="./js/app.js"></script>

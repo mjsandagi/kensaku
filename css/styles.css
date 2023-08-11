@@ -1,5 +1,10 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f0f8ff;
+}
+
+#title {
+    color: #48206b;
 }
 
 .moreInfo {
@@ -8,4 +13,66 @@ body {
 
 .animeImg:hover + .moreInfo {
     display: block;
+}
+
+#resultsElement {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to the next line when necessary */
+    justify-content: space-around; /* Distribute items evenly */
+}
+
+.anime {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.animeImg {
+    max-width: 100%;
+}
+
+.animeTitle {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.moreInfo {
+    margin-top: auto;
+    flex-grow: 1;
+}
+
+#title {
+    text-align: center;
+    font-size: 450%;
+    font-weight: bold;
+    transform: skewX(-10deg);
+    margin: 0;
+    padding: 20px;
+}
+
+#searchElement {
+    /* Initial styles for the search element */
+    background-color: #f2ceff;
+    text-align: center;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 50px;
+    width: 40%;
+    transition: width 0.5s ease; /* Transition for width change */
+}
+
+#searchElementDiv {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+}
+
+#searchElement:hover,
+#searchElement:focus {
+    /* Styles for when the search element is hovered or focused */
+    width: 50%; /* Adjust the width as needed */
 }
