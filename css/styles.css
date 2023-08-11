@@ -1,5 +1,10 @@
 body {
 }
 
-.animeImg:hover {
+.moreInfo {
+    display: none;
+}
+
+.animeImg:hover + .moreInfo {
+    display: block;
 }
