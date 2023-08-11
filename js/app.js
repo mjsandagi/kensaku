@@ -24,6 +24,10 @@ function showMoreInfo(malId, descrText) {
     ).innerHTML += `<p class="moreInfo">${descrText}</p>`;
 }
 
+function addLineBreaks(text) {
+    return text.replace(/(\r\n|\r|\n)/g, "<br>");
+}
+
 searchElement.addEventListener("keydown", async (event) => {
     if (event.key == "Enter" && searchElement.value) {
         let uriSafeSearchTerm = encodeURIComponent(searchElement.value);
@@ -32,6 +36,7 @@ searchElement.addEventListener("keydown", async (event) => {
         console.log(searchData.data);
         resultsElement.innerHTML = "";
         for (const [key, value] of Object.entries(searchData.data)) {
+            console.log(value.synopsis);
             if (value.title_english) {
                 var titleElem = `<p><a href="${value.url}">${value.title} (${value.title_english})</a></p>`;
             } else {
@@ -41,7 +46,7 @@ searchElement.addEventListener("keydown", async (event) => {
             let finalElem = `<div class="anime" id="${value.mal_id}">${titleElem}${imageElem}</div>`;
             resultsElement.innerHTML += `${finalElem}`;
             if (value.synopsis) {
-                showMoreInfo(value.mal_id, value.synopsis);
+                showMoreInfo(value.mal_id, addLineBreaks(value.synopsis));
             }
         }
     }
