@@ -1,16 +1,16 @@
 const searchElement = document.querySelector("#searchElement");
 const resultsElement = document.querySelector("#resultsElement");
-var previousSearchRes = searchElement.value;
-var searchData;
+let previousSearchRes = searchElement.value;
+let searchData;
 const baseURL = "https://api.jikan.moe/v4/anime";
-params = {};
 
 async function getData(baseURL, searchTerm) {
-    query = new URLSearchParams({
+    const query = new URLSearchParams({
         q: searchTerm,
     });
+
     try {
-        let response = await fetch(`${baseURL}?${query}`);
+        const response = await fetch(`${baseURL}?${query}`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -20,9 +20,10 @@ async function getData(baseURL, searchTerm) {
 }
 
 function showMoreInfo(malId, descrText) {
-    document.getElementById(
-        malId
-    ).innerHTML += `<p class="moreInfo">${descrText}</p>`;
+    const moreInfoElem = document.createElement("p");
+    moreInfoElem.classList.add("moreInfo");
+    moreInfoElem.innerHTML = addLineBreaks(descrText);
+    document.getElementById(malId).appendChild(moreInfoElem);
 }
 
 function addLineBreaks(text) {
@@ -30,25 +31,28 @@ function addLineBreaks(text) {
 }
 
 searchElement.addEventListener("keydown", async (event) => {
-    if (event.key == "Enter" && searchElement.value) {
-        let uriSafeSearchTerm = encodeURIComponent(searchElement.value);
-        // console.log(uriSafeSearchTerm);
-        if (previousSearchRes != searchElement.value) {
+    if (event.key === "Enter" && searchElement.value) {
+        const uriSafeSearchTerm = encodeURIComponent(searchElement.value);
+        if (previousSearchRes !== searchElement.value) {
             searchData = await getData(baseURL, uriSafeSearchTerm);
             previousSearchRes = searchElement.value;
         }
+
         console.log(searchData.data);
         resultsElement.innerHTML = "";
-        for (const [key, value] of Object.entries(searchData.data)) {
-            // console.log(value.synopsis);
-            var titleElem = value.title_english
-                ? `<p class="animeTitles"><a href="${value.url}">${value.title} (${value.title_english})</a></p>`
-                : `<p class-"animeTitles"><a href="${value.url}">${value.title}</a></p>`;
-            let imageElem = `<img class="animeImg" id="${value.mal_id}IMG" src="${value.images.jpg.image_url}" title="${value.title_japanese}">`;
-            let finalElem = `<div class="anime" id="${value.mal_id}">${titleElem}${imageElem}</div>`;
-            resultsElement.innerHTML += `${finalElem}`;
+        for (const value of searchData.data) {
+            const titleElem = `<p class="animeTitles"><a href="${value.url}">${
+                value.title
+            }${value.title_english ? ` (${value.title_english})` : ""}</a></p>`;
+            const imageElem = `<img class="animeImg" id="${value.mal_id}IMG" src="${value.images.jpg.image_url}" title="${value.title_japanese}">`;
+            const animeElem = document.createElement("div");
+            animeElem.classList.add("anime");
+            animeElem.id = value.mal_id;
+            animeElem.innerHTML = `${titleElem}${imageElem}`;
+            resultsElement.appendChild(animeElem);
+
             if (value.synopsis) {
-                showMoreInfo(value.mal_id, addLineBreaks(value.synopsis));
+                showMoreInfo(value.mal_id, value.synopsis);
             }
         }
     }
