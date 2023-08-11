@@ -41,11 +41,9 @@ searchElement.addEventListener("keydown", async (event) => {
         resultsElement.innerHTML = "";
         for (const [key, value] of Object.entries(searchData.data)) {
             // console.log(value.synopsis);
-            if (value.title_english) {
-                var titleElem = `<p class="animeTitles"><a href="${value.url}">${value.title} (${value.title_english})</a></p>`;
-            } else {
-                var titleElem = `<p class-"animeTitles"><a href="${value.url}">${value.title}</a></p>`;
-            }
+            var titleElem = value.title_english
+                ? `<p class="animeTitles"><a href="${value.url}">${value.title} (${value.title_english})</a></p>`
+                : `<p class-"animeTitles"><a href="${value.url}">${value.title}</a></p>`;
             let imageElem = `<img class="animeImg" id="${value.mal_id}IMG" src="${value.images.jpg.image_url}" title="${value.title_japanese}">`;
             let finalElem = `<div class="anime" id="${value.mal_id}">${titleElem}${imageElem}</div>`;
             resultsElement.innerHTML += `${finalElem}`;
