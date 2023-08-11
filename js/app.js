@@ -1,6 +1,7 @@
 const searchElement = document.querySelector("#searchElement");
 const resultsElement = document.querySelector("#resultsElement");
-
+var previousSearchRes = searchElement.value;
+var searchData;
 const baseURL = "https://api.jikan.moe/v4/anime";
 params = {};
 
@@ -32,15 +33,18 @@ searchElement.addEventListener("keydown", async (event) => {
     if (event.key == "Enter" && searchElement.value) {
         let uriSafeSearchTerm = encodeURIComponent(searchElement.value);
         // console.log(uriSafeSearchTerm);
-        let searchData = await getData(baseURL, uriSafeSearchTerm);
+        if (previousSearchRes != searchElement.value) {
+            searchData = await getData(baseURL, uriSafeSearchTerm);
+            previousSearchRes = searchElement.value;
+        }
         console.log(searchData.data);
         resultsElement.innerHTML = "";
         for (const [key, value] of Object.entries(searchData.data)) {
-            console.log(value.synopsis);
+            // console.log(value.synopsis);
             if (value.title_english) {
-                var titleElem = `<p><a href="${value.url}">${value.title} (${value.title_english})</a></p>`;
+                var titleElem = `<p class="animeTitles"><a href="${value.url}">${value.title} (${value.title_english})</a></p>`;
             } else {
-                var titleElem = `<p><a href="${value.url}">${value.title}</a></p>`;
+                var titleElem = `<p class-"animeTitles"><a href="${value.url}">${value.title}</a></p>`;
             }
             let imageElem = `<img class="animeImg" id="${value.mal_id}IMG" src="${value.images.jpg.image_url}" title="${value.title_japanese}">`;
             let finalElem = `<div class="anime" id="${value.mal_id}">${titleElem}${imageElem}</div>`;
