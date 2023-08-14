@@ -34,27 +34,38 @@ body {
 }
 
 /* Anime Styles */
+#resultsElement {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Anime Styles */
 .anime {
-    width: calc(33.33% - 10px);
+    width: calc(33.33% - 20px);
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 /* Anime Image Styles */
 .animeImg {
     max-width: 100%;
+    height: auto;
 }
 
 /* Anime Titles Styles */
 .animeTitles {
     font-weight: bold;
     margin: 10px 0;
+    text-align: center;
 }
-
 /* Link Styles */
 a {
     text-decoration: none;
@@ -80,5 +91,13 @@ a {
 
 #searchElement:hover,
 #searchElement:focus {
-    width: 50%;
+    width: 45%;
+}
+
+@media (max-width: 767px) {
+    /* Adjust for phone screens */
+    .anime {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
 }
