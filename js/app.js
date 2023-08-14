@@ -41,19 +41,29 @@ searchElement.addEventListener("keydown", async (event) => {
         console.log(searchData.data);
         resultsElement.innerHTML = "";
         for (const value of searchData.data) {
-            const titleElem = `<p class="animeTitles"><a href="${value.url}">${
-                value.title
-            }${value.title_english ? ` (${value.title_english})` : ""}</a></p>`;
-            const imageElem = `<img class="animeImg" id="${value.mal_id}IMG" src="${value.images.jpg.image_url}" title="${value.title_japanese}">`;
-            const animeElem = document.createElement("div");
-            animeElem.classList.add("anime");
-            animeElem.id = value.mal_id;
-            animeElem.innerHTML = `${titleElem}${imageElem}`;
-            resultsElement.appendChild(animeElem);
+            const image = new Image();
+            image.src = value.images.jpg.image_url;
 
-            if (value.synopsis) {
-                showMoreInfo(value.mal_id, value.synopsis);
-            }
+            // Check if the image's height is larger than its width
+            image.onload = function () {
+                if (image.height > image.width) {
+                    const titleElem = `<p class="animeTitles"><a href="${
+                        value.url
+                    }">${value.title}${
+                        value.title_english ? ` (${value.title_english})` : ""
+                    }</a></p>`;
+                    const imageElem = `<img class="animeImg" id="${value.mal_id}IMG" src="${value.images.jpg.image_url}" title="${value.title_japanese}">`;
+                    const animeElem = document.createElement("div");
+                    animeElem.classList.add("anime");
+                    animeElem.id = value.mal_id;
+                    animeElem.innerHTML = `${titleElem}${imageElem}`;
+                    resultsElement.appendChild(animeElem);
+
+                    if (value.synopsis) {
+                        showMoreInfo(value.mal_id, value.synopsis);
+                    }
+                }
+            };
         }
     }
 });
