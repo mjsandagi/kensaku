@@ -21,7 +21,7 @@ You can see a live demo of the app [here](https://mjsandagi.github.io/kensaku).
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/ei-cannot-cook/kensaku.git
+    git clone https://github.com/mjsandagi/kensaku.git
     ```
 
 2. Navigate to the project directory:
