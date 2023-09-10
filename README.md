@@ -1,7 +1,7 @@
 # Kensaku
 
-![GitHub](https://img.shields.io/github/license/ei-cannot-cook/kensaku)
-![GitHub last commit](https://img.shields.io/github/last-commit/ei-cannot-cook/kensaku)
+![GitHub](https://img.shields.io/github/license/mjsandagi/kensaku)
+![GitHub last commit](https://img.shields.io/github/last-commit/mjsandagi/kensaku)
 
 Kensaku is an anime search app that allows users to search for their favorite anime using the Jikan MyAnimeList API. The app is built using JavaScript, HTML, and CSS.
 
@@ -14,7 +14,7 @@ Kensaku is an anime search app that allows users to search for their favorite an
 
 ## Demo
 
-You can see a live demo of the app [here](https://ei-cannot-cook.github.io/kensaku).
+You can see a live demo of the app [here](https://mjsandagi.github.io/kensaku).
 
 ## Installation
 
