@@ -17,6 +17,7 @@ Kensaku is an anime search app that allows users to search for their favorite an
 You can see a live demo of the app [here](https://mjsandagi.github.io/kensaku).
 
 GitHub Pages: [mjsandagi.github.io/kensaku](https://mjsandagi.github.io/kensaku)
+
 Vercel deployment: [kensaku.vercel.app](https://kensaku.vercel.app/)
 
 ## Installation
