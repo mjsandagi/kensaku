@@ -1,7 +1,5 @@
 # Kensaku
 
-![GitHub last commit](https://img.shields.io/github/last-commit/mjsandagi/kensaku)
-
 Kensaku is an anime search app that allows users to search for their favorite anime using the Jikan MyAnimeList API. The app is built using JavaScript, HTML, and CSS.
 
 ## Features
